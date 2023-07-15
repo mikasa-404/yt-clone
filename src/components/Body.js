@@ -4,7 +4,7 @@ import MainContainer from "./MainContainer"
 
 const Body = () => {
   return (
-    <div>
+    <div className="flex justify-start">
         <Sidebar/>
         <MainContainer/>
     </div>
