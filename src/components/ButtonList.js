@@ -31,7 +31,7 @@ const ButtonList = () => {
     "ipsum"
   ];
   return (
-    <div className=" whitespace-nowrap overflow-hidden overflow-x-scroll">
+    <div className=" whitespace-nowrap overflow-hidden overflow-x-scroll no-scrollbar m-2">
       {/* <div className="p-1 bg-gray-200 m-2 px-3 rounded-lg">Mixes</div> */}
       {bList.map((item)=> <Button name={item}/>)}
     </div>

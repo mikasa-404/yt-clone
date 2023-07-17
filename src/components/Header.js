@@ -6,7 +6,7 @@ import userIcon from "../imgs/user.png"
 
 const Header = () => {
   return (
-    <div className="grid grid-flow-col border-2 border-black h-14">
+    <div className="grid grid-flow-col h-14">
       <div className="1 flex m-1 col-span-2"> 
           <img className="h-8 m-2 p-1 " src={hamButton} alt="hambutton"></img>
           <img className="h-8 m-2" alt="logo" src={ytlogo}></img>
