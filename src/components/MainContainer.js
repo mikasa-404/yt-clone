@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import ButtonList from './ButtonList';
 
 const MainContainer = () => {
   return (
-    <div className="">MainContainer</div>
+    <div className="w-5/6 ">
+      <ButtonList/>
+    </div>
   )
 }
 
-export default MainContainer
+export default MainContainer;

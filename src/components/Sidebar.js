@@ -14,6 +14,12 @@ import news from "../imgs/news.png";
 import sport from "../imgs/sport.png";
 import learn from "../imgs/learn.png";
 import fashion from "../imgs/fashion.png";
+import settings from "../imgs/settings.png"
+import feedback from "../imgs/feedback.png"
+import report from "../imgs/report.png"
+import help from "../imgs/help.png"
+
+
 
 
 const SideButton = ({ name, logo }) => (
@@ -38,11 +44,14 @@ const Sidebar = () => {
     { name: "Learning", logo: learn},
     { name: "Fashion and Beauty", logo: fashion},
   ];
-  const settingsList = ["Settings", "Report History", "Help", "Send Feedback"];
+  const settingsList = [
+    { name: "Settings", logo: settings},
+    { name: "Report History", logo: report},
+    { name: "Help", logo: help},
+    { name: "Send Feedback", logo: feedback},
+    ];
   return (
-    <div className="w-60">
-      <div className="wrappper fixed h-full w-60">
-        <div className="shadow-lg px-5 pb-2 h-full overflow-y-auto scrolling-touch w-full">
+        <div className="whitespace-nowrap overflow-hidden overflow-y-scroll w-1/6 h-screen">
           <ul className="border-0 border-b-2 py-3">
             <li className="px-3 flex items-center rounded-lg bg-gray-100 hover:bg-gray-200 ">
               <img className="h-7" alt="homelogo" src={homelogo}></img>
@@ -77,12 +86,13 @@ const Sidebar = () => {
           </div>
           <div className="border-0 border-b-2 py-4">
             {settingsList.map((item) => {
-              return <SideButton name={item} />;
+              return <SideButton name={item.name} logo={item.logo} />;
             })}
           </div>
+          <div className="border-blue-200 border-2 py-4 mb-2">
+            About Press Copyright Contact Us Creators
+          </div>
         </div>
-      </div>
-    </div>
   );
 };
 
