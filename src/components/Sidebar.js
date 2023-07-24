@@ -18,19 +18,20 @@ import settings from "../imgs/settings.png"
 import feedback from "../imgs/feedback.png"
 import report from "../imgs/report.png"
 import help from "../imgs/help.png"
+import { useSelector } from "react-redux";
 
 
 
 
 const SideButton = ({ name, logo }) => (
-  <div className="px-3 flex items-center rounded-lg hover:bg-gray-100">
-    {console.log(name)}
+  <div className="px-3 flex items-center rounded-lg hover:bg-gray-100 mx-2">
     <img className="h-6" alt="homelogo" src={logo}></img>
     <div className="m-2 mx-6 ">{name}</div>
   </div>
 );
 
 const Sidebar = () => {
+  const isMenuOpen = useSelector(store=>store.app.isOpen);
   const exploreList = [
     { name: "Trending", logo: trending},
     { name: "Shopping", logo: shopping},
@@ -50,49 +51,68 @@ const Sidebar = () => {
     { name: "Help", logo: help},
     { name: "Send Feedback", logo: feedback},
     ];
-  return (
-        <div className="whitespace-nowrap overflow-hidden overflow-y-scroll w-1/6 h-screen">
+    //early return
+
+  return isMenuOpen ? (
+        <div className="whitespace-nowrap overflow-hidden overflow-y-auto w-1/6 h-screen custom-scrollbar">
           <ul className="border-0 border-b-2 py-3">
-            <li className="px-3 flex items-center rounded-lg bg-gray-100 hover:bg-gray-200 ">
+            <li className="px-3 flex items-center rounded-lg bg-gray-100 hover:bg-gray-200  mx-2">
               <img className="h-7" alt="homelogo" src={homelogo}></img>
               <div className="m-2 mx-6 font-semibold">Home</div>
             </li>
-            <li className="px-3 flex items-center rounded-lg hover:bg-gray-100 ">
+            <li className="px-3 flex items-center rounded-lg hover:bg-gray-100  mx-2">
               <img className="h-6" alt="homelogo" src={shortslogo}></img>
               <div className="m-2 mx-6 ">Shorts</div>
             </li>
-            <li className="px-3 flex items-center rounded-lg hover:bg-gray-100">
+            <li className="px-3 flex items-center rounded-lg hover:bg-gray-100 mx-2">
               <img className="h-6" alt="homelogo" src={subs}></img>
               <div className="m-2 mx-6 ">Subscriptions</div>
             </li>
           </ul>
           <div className="border-0 border-b-2 py-3">
-            <li className="px-3 flex items-center rounded-lg hover:bg-gray-100">
+            <li className="px-3 flex items-center rounded-lg hover:bg-gray-100 mx-2">
               <img className="h-6" alt="homelogo" src={library}></img>
               <div className="m-2 mx-6 ">Library</div>
             </li>
-            <li className="px-3 flex items-center rounded-lg hover:bg-gray-100">
+            <li className="px-3 flex items-center rounded-lg hover:bg-gray-100 mx-2">
               <img className="h-6" alt="homelogo" src={history}></img>
               <div className="m-2 mx-6 ">History</div>
             </li>
           </div>
           <div className="border-0 border-b-2 py-3">
-            <div className="px-3 flex items-center rounded-lg hover:bg-gray-100">
+            <div className="px-3 flex items-center rounded-lg hover:bg-gray-100 mx-2">
               <div className="m-1">Explore</div>
             </div>
-            {exploreList.map((item) => {
-              return <SideButton name={item.name} logo={item.logo} />;
+            {exploreList.map((item, index) => {
+              return <SideButton key={index} name={item.name} logo={item.logo} />;
             })}
           </div>
           <div className="border-0 border-b-2 py-4">
-            {settingsList.map((item) => {
-              return <SideButton name={item.name} logo={item.logo} />;
+            {settingsList.map((item, index) => {
+              return <SideButton key={index} name={item.name} logo={item.logo} />;
             })}
           </div>
           <div className="border-blue-200 border-2 py-4 mb-2">
             About Press Copyright Contact Us Creators
           </div>
         </div>
+  ):(
+    <div>
+      <ul className=" text-center">
+            <li className=" p-1 py-4 rounded-lg hover:bg-gray-100 ">
+              <img className="h-7  m-auto" alt="homelogo" src={homelogo}></img>
+              <div className="text-xs">Home</div>
+            </li>
+            <li className="  p-1 py-4 rounded-lg hover:bg-gray-100 ">
+              <img className="h-7 m-auto" alt="homelogo" src={shortslogo}></img>
+              <div className="text-xs ">Shorts</div>
+            </li>
+            <li className="  p-1 py-4 rounded-lg hover:bg-gray-100 ">
+              <img className="h-7 m-auto" alt="homelogo" src={subs}></img>
+              <div className="text-xs ">Subscriptions</div>
+            </li>
+          </ul>
+    </div>
   );
 };
 

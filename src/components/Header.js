@@ -3,12 +3,18 @@ import ytlogo from "../imgs/youtube_logo.jpg";
 import hamButton from "../imgs/png-transparent-hamburger-button-computer-icons-menu-ganesha-angle-white-food.png";
 import searchButton from "../imgs/search.png"
 import userIcon from "../imgs/user.png"
+import { useDispatch } from "react-redux";
+import { toggleMenu } from "../utils/appSlice";
 
 const Header = () => {
+  const dispatch= useDispatch();
+  const toggleMenuHandler=()=>{
+    dispatch(toggleMenu());
+  }
   return (
     <div className="grid grid-flow-col h-14">
       <div className="1 flex m-1 col-span-2"> 
-          <img className="h-8 m-2 p-1 " src={hamButton} alt="hambutton"></img>
+          <img className="h-8 m-2 p-1 cursor-pointer" src={hamButton} alt="hambutton" onClick={()=> toggleMenuHandler()} ></img>
           <img className="h-8 m-2" alt="logo" src={ytlogo}></img>
       </div>
       <div className=" flex 2 m-1 col-span-6 items-center justify-center">

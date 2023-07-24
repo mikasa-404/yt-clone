@@ -2,12 +2,11 @@ import React from "react";
 
 const Button = ({ name }) => {
     return(
-  <span className="p-1 bg-gray-200 m-2 px-3 rounded-lg w-fit">{name} </span>);
+  <button className="bg-gray-100 m-1 p-2 px-3 rounded-lg">{name} </button>);
 };
 
 const ButtonList = () => {
   const bList = [
-    "All",
     "Mixes",
     "Music",
     "Taylor Swift",
@@ -31,9 +30,9 @@ const ButtonList = () => {
     "ipsum"
   ];
   return (
-    <div className=" whitespace-nowrap overflow-hidden overflow-x-scroll no-scrollbar m-2">
-      {/* <div className="p-1 bg-gray-200 m-2 px-3 rounded-lg">Mixes</div> */}
-      {bList.map((item)=> <Button name={item}/>)}
+    <div className=" whitespace-nowrap overflow-hidden overflow-x-scroll no-scrollbar m-3 text-sm">
+      <button className="bg-black m-1 p-2 px-3 rounded-lg text-white">All </button>
+      {bList.map((item, index)=> <Button key={index} name={item} />)}
     </div>
 
   );
