@@ -54,7 +54,7 @@ const Sidebar = () => {
     //early return
 
   return isMenuOpen ? (
-        <div className="whitespace-nowrap overflow-hidden overflow-y-auto w-1/6 h-screen custom-scrollbar">
+        <div className="whitespace-nowrap overflow-hidden overflow-y-auto h-screen custom-scrollbar">
           <ul className="border-0 border-b-2 py-3">
             <li className="px-3 flex items-center rounded-lg bg-gray-100 hover:bg-gray-200  mx-2">
               <img className="h-7" alt="homelogo" src={homelogo}></img>
@@ -97,19 +97,19 @@ const Sidebar = () => {
           </div>
         </div>
   ):(
-    <div>
+    <div className=" text-xs">
       <ul className=" text-center">
             <li className=" p-1 py-4 rounded-lg hover:bg-gray-100 ">
               <img className="h-7  m-auto" alt="homelogo" src={homelogo}></img>
-              <div className="text-xs">Home</div>
+              <div className="">Home</div>
             </li>
             <li className="  p-1 py-4 rounded-lg hover:bg-gray-100 ">
               <img className="h-7 m-auto" alt="homelogo" src={shortslogo}></img>
-              <div className="text-xs ">Shorts</div>
+              <div className="">Shorts</div>
             </li>
             <li className="  p-1 py-4 rounded-lg hover:bg-gray-100 ">
               <img className="h-7 m-auto" alt="homelogo" src={subs}></img>
-              <div className="text-xs ">Subscriptions</div>
+              <div className="">Subscriptions</div>
             </li>
           </ul>
     </div>

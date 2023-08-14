@@ -2,6 +2,7 @@ import React from 'react'
 
 const VideoCard = ({info}) => {
 console.log(info);
+
 const {title, thumbnails, channelTitle}=info?.snippet;
 const {viewCount}= info?.statistics;
 const nFormatter=(num, digits) => {
@@ -20,9 +21,9 @@ const nFormatter=(num, digits) => {
     });
     return item ? (num / item.value).toFixed(digits).replace(rx, "$1") + item.symbol : "0";
 }
-
+// isMenuOpen? 'w-96 m-1': 'w-[20rem] m-1'
   return (
-    <div className=" w-96 m-1">
+    <div className={'m-2'}>
         <img className="rounded-xl w-full" alt="thumbnail" src={thumbnails?.medium.url}/>
         <h1 className="font-medium my-2">{title}</h1>
         <div className="text-sm text-gray-600">
