@@ -2,6 +2,7 @@
 This project is a YouTube clone built using React, JavaScript, Tailwind CSS, and Redux. It aims to replicate some of the core features and functionalities of the popular video-sharing platform, YouTube.
 
 ## 🔗 Live link
+[https://main--sensational-lamington-3a479d.netlify.app/](https://main--sensational-lamington-3a479d.netlify.app/)
 
 ## 💻 Tech-Stack 
 - React: JavaScript library for building user interfaces
