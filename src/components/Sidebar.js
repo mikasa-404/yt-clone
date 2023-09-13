@@ -19,6 +19,8 @@ import feedback from "../imgs/feedback.png"
 import report from "../imgs/report.png"
 import help from "../imgs/help.png"
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 
 
@@ -52,14 +54,16 @@ const Sidebar = () => {
     { name: "Send Feedback", logo: feedback},
     ];
     //early return
-
+  let location = useLocation();
   return isMenuOpen ? (
         <div className="whitespace-nowrap overflow-hidden overflow-y-auto h-screen custom-scrollbar">
           <ul className="border-0 border-b-2 py-3">
+            <Link to="/">
             <li className="px-3 flex items-center rounded-lg bg-gray-100 hover:bg-gray-200  mx-2">
               <img className="h-7" alt="homelogo" src={homelogo}></img>
               <div className="m-2 mx-6 font-semibold">Home</div>
             </li>
+            </Link>
             <li className="px-3 flex items-center rounded-lg hover:bg-gray-100  mx-2">
               <img className="h-6" alt="homelogo" src={shortslogo}></img>
               <div className="m-2 mx-6 ">Shorts</div>
@@ -97,12 +101,14 @@ const Sidebar = () => {
           </div>
         </div>
   ):(
+    (location.pathname==="/watch")?(null):(
     <div className=" text-xs">
       <ul className=" text-center">
-            <li className=" p-1 py-4 rounded-lg hover:bg-gray-100 ">
+            <Link to="/"><li className=" p-1 py-4 rounded-lg hover:bg-gray-100 ">
               <img className="h-7  m-auto" alt="homelogo" src={homelogo}></img>
               <div className="">Home</div>
             </li>
+            </Link>
             <li className="  p-1 py-4 rounded-lg hover:bg-gray-100 ">
               <img className="h-7 m-auto" alt="homelogo" src={shortslogo}></img>
               <div className="">Shorts</div>
@@ -112,7 +118,7 @@ const Sidebar = () => {
               <div className="">Subscriptions</div>
             </li>
           </ul>
-    </div>
+    </div>)
   );
 };
 
