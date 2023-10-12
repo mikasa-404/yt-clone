@@ -30,10 +30,14 @@ const nFormatter=(num, digits) => {
         <h3 className=''>{nFormatter(viewCount, 1)}</h3>
         </div>
         
-        
-
     </div>
   )
 }
+// //higher order component
+// export const AdVideoCard=({info})=>{
+//   return <div className="border border-red-500">
+//     <VideoCard info={info}/>
+//   </div>
+// }
 
 export default VideoCard
