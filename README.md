@@ -3,7 +3,7 @@ This project is a YouTube clone built using React, JavaScript, Tailwind CSS, and
 ![Home page](./src/imgs/Screenshot%20from%202023-08-15%2016-55-19.png)
 
 ## 🔗 Live link
-[https://foodyville.netlify.app](https://foodyville.netlify.app)
+[https://priya-youtube.netlify.app/](https://priya-youtube.netlify.app/)
 
 ## 💻 Tech-Stack 
 - React: JavaScript library for building user interfaces
