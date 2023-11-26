@@ -1,5 +1,5 @@
 import React from 'react'
-import { useEffect , useState} from 'react';
+import { useEffect} from 'react';
 import { VIDEO_API } from '../utils/constants';
 
 const WatchPageDetails = (videoId) => {
