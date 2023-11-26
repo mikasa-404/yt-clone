@@ -26,7 +26,7 @@ import { useLocation } from "react-router-dom";
 
 
 const SideButton = ({ name, logo }) => (
-  <div className="px-3 flex items-center rounded-lg hover:bg-gray-100 mx-2">
+  <div className="px-3 flex items-center rounded-lg hover:bg-gray-100 mx-2 py-1">
     <img className="h-6" alt="homelogo" src={logo}></img>
     <div className="m-2 mx-6 ">{name}</div>
   </div>
@@ -56,35 +56,35 @@ const Sidebar = () => {
     //early return
   let location = useLocation();
   return isMenuOpen ? (
-        <div className="whitespace-nowrap overflow-hidden overflow-y-auto h-screen custom-scrollbar">
+        <div className="whitespace-nowrap overflow-hidden overflow-y-auto h-screen custom-scrollbar text-sm">
           <ul className="border-0 border-b-2 py-3">
             <Link to="/">
-            <li className="px-3 flex items-center rounded-lg bg-gray-100 hover:bg-gray-200  mx-2">
+            <li className="px-3 flex items-center rounded-lg bg-gray-100 hover:bg-gray-200 mx-2 py-1">
               <img className="h-7" alt="homelogo" src={homelogo}></img>
               <div className="m-2 mx-6 font-semibold">Home</div>
             </li>
             </Link>
-            <li className="px-3 flex items-center rounded-lg hover:bg-gray-100  mx-2">
+            <li className="px-3 flex items-center rounded-lg hover:bg-gray-100  mx-2 py-1">
               <img className="h-6" alt="homelogo" src={shortslogo}></img>
               <div className="m-2 mx-6 ">Shorts</div>
             </li>
-            <li className="px-3 flex items-center rounded-lg hover:bg-gray-100 mx-2">
+            <li className="px-3 flex items-center rounded-lg hover:bg-gray-100 mx-2 py-1">
               <img className="h-6" alt="homelogo" src={subs}></img>
               <div className="m-2 mx-6 ">Subscriptions</div>
             </li>
           </ul>
           <div className="border-0 border-b-2 py-3">
-            <li className="px-3 flex items-center rounded-lg hover:bg-gray-100 mx-2">
+            <li className="px-3 flex items-center rounded-lg hover:bg-gray-100 mx-2 py-1">
               <img className="h-6" alt="homelogo" src={library}></img>
               <div className="m-2 mx-6 ">Library</div>
             </li>
-            <li className="px-3 flex items-center rounded-lg hover:bg-gray-100 mx-2">
+            <li className="px-3 flex items-center rounded-lg hover:bg-gray-100 mx-2 py-1">
               <img className="h-6" alt="homelogo" src={history}></img>
               <div className="m-2 mx-6 ">History</div>
             </li>
           </div>
           <div className="border-0 border-b-2 py-3">
-            <div className="px-3 flex items-center rounded-lg hover:bg-gray-100 mx-2">
+            <div className="px-3 flex items-center rounded-lg hover:bg-gray-100 mx-2 py-1">
               <div className="m-1">Explore</div>
             </div>
             {exploreList.map((item, index) => {

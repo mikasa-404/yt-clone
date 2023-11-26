@@ -3,7 +3,7 @@ This project is a YouTube clone built using React, JavaScript, Tailwind CSS, and
 ![Home page](./src/imgs/Screenshot%20from%202023-08-15%2016-55-19.png)
 
 ## 🔗 Live link
-[https://main--sensational-lamington-3a479d.netlify.app/](https://main--sensational-lamington-3a479d.netlify.app/)
+[https://foodyville.netlify.app](https://foodyville.netlify.app)
 
 ## 💻 Tech-Stack 
 - React: JavaScript library for building user interfaces
@@ -13,11 +13,7 @@ This project is a YouTube clone built using React, JavaScript, Tailwind CSS, and
 
 ## 📓Features 
 - Search and browse YouTube videos
-- Watch videos with player controls
-- Like, dislike, and comment on videos
-- Custom shimmer UI effect for improved user experience.
-- Utilizes custom hooks for code organization and reusability.
-- Implements lazy loading to optimize performance.
+- Hamburger menu toggle sidebar
 
 ## Available Scripts
 
