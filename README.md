@@ -12,8 +12,9 @@ This project is a YouTube clone built using React, JavaScript, Tailwind CSS, and
 - Redux: State management library for JavaScript applications
 
 ## 📓Features 
-- Search and browse YouTube videos
 - Hamburger menu toggle sidebar
+- Well optimised search that uses live API, debouncing and caching as well
+- N-level nested comments
 
 ## Available Scripts
 

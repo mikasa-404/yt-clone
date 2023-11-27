@@ -3,23 +3,32 @@ import ytlogo from "../imgs/youtube_logo.jpg";
 import hamButton from "../imgs/png-transparent-hamburger-button-computer-icons-menu-ganesha-angle-white-food.png";
 import searchButton from "../imgs/search.png"
 import userIcon from "../imgs/user.png"
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import { YOUTUBE_SEARCH_API } from "../utils/constants";
+import { cacheResults } from "../utils/searchSlice";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchSuggestions, setSearchSuggestions] = useState([]);
-  const [showSuggestions, setShowSuggestion]=useState(false);
+  const [showSuggestions, setShowSuggestion] = useState(false);
+
   const suggestionsRef = useRef();
 
-
+  const Scache = useSelector((store) => store.search);
   const dispatch = useDispatch();
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
   }
+
   useEffect(() => {
-    const timer = setTimeout(() => getSearchSuggestions(), 150);
+    const timer = setTimeout(() => {
+      if (Scache[searchQuery]) {
+        setSearchSuggestions(Scache[searchQuery])
+      } else {
+        getSearchSuggestions();
+      }
+    }, 150);
     return () => {
       clearTimeout(timer);
     };
@@ -38,10 +47,16 @@ const Header = () => {
   }, [suggestionsRef]);
 
   const getSearchSuggestions = async () => {
-    console.log(searchQuery);
     const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
     const json = await data.json();
     setSearchSuggestions(json[1]);
+
+    //update cache
+    dispatch(
+      cacheResults({
+        [searchQuery]: json[1],
+      })
+    );
   }
   return (
     <div className="grid grid-flow-col ">
@@ -53,21 +68,21 @@ const Header = () => {
       </div>
       <div ref={suggestionsRef} className="m-1 col-span-6 ">
         <div className="w-full flex items-center">
-          <input  className=" w-8/12 border-slate-300 border rounded-l-2xl m-0 mr-0 text-base h-9 px-4 focus:outline-none focus:shadow-outline focus:border-blue-700"
+          <input className=" w-8/12 border-slate-300 border rounded-l-2xl m-0 mr-0 text-base h-9 px-4 focus:outline-none focus:shadow-outline focus:border-blue-700"
             placeholder="Search"
             value={searchQuery}
             onChange={(e) => {
               return setSearchQuery(e.target.value)
             }}
-            onClick={()=>setShowSuggestion(true)}
-            ></input>
+            onClick={() => setShowSuggestion(true)}
+          ></input>
           <button className="border-slate-300 border rounded-r-2xl ml-0 p-2 h-9 hover:bg-gray-100">
             <img className=" h-5 pl-3 pr-4" src={searchButton} alt="searchbtn"></img>
           </button>
         </div>
         {showSuggestions && <div className="bg-white fixed w-2/5 rounded-2xl ">
-          <ul className="">            
-            {searchSuggestions.map((s)=>(<li key={s} className="hover:bg-gray-200 px-4 py-1">{s}</li>)) }
+          <ul className="">
+            {searchSuggestions.map((s) => (<li key={s} className="hover:bg-gray-200 px-4 py-1">{s}</li>))}
           </ul>
         </div>}
       </div>
