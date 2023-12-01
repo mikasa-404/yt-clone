@@ -1,19 +1,31 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { closeMenu } from '../utils/appSlice';
 import { useSearchParams } from 'react-router-dom';
 import WatchPageDetails from './WatchPageDetails';
-const WatchPage = () => {
+import { VIDEO_API } from '../utils/constants';
 
+const WatchPage = () => {
+  // const [data, setData]=useState([]);
   const [params] = useSearchParams();
   const dispatch = useDispatch();
   const vidId=params.get("v");
 
+  // const getVideoData = async ()=>{
+  //   const resp= await fetch( VIDEO_API+vidId );
+  //   const json= await resp.json();
+  //   setData(json);
+  //   console.log(VIDEO_API+vidId);
+
+  // }
+  // useEffect(()=>{
+  //   getVideoData();
+  // },[]);
   useEffect(()=>{
     dispatch(closeMenu());
   },[]);
-  // const isMenuOpen = useSelector(store=>store.app.isOpen);    
   return (
+
     <div className="w-full watch page">
       <div className="vid-container m-5 mx-24">
       <iframe 

@@ -3,6 +3,7 @@ import { YOUTUBE_VIDEOS_API } from "../utils/constants";
 import VideoCard from "./VideoCard";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Shimmer from "./Shimmer";
 
 const VideoContainer = () => {
   const [videos, setVideos]= useState([]);
@@ -20,7 +21,7 @@ const VideoContainer = () => {
   const isMenuOpen = useSelector(store=>store.app.isOpen);
 
 
-  return videos.length===0? null:(
+  return videos.length===0? (<Shimmer/>):(
     <div className={'m-3 overflow-y-scroll overflow-hidden h-screen p-auto ' + (isMenuOpen ? 'grid grid-cols-3': ' grid grid-cols-4')}>
      {/* <AdVideoCard info={videos[0]}/> */}
      { videos.map((vid)=>(
