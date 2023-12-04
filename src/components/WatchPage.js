@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { closeMenu } from '../utils/appSlice';
 import { useSearchParams } from 'react-router-dom';
 import WatchPageDetails from './WatchPageDetails';
-import { VIDEO_API } from '../utils/constants';
+import CommentContainer from './CommentContainer';
 
 const WatchPage = () => {
   // const [data, setData]=useState([]);
@@ -11,23 +11,14 @@ const WatchPage = () => {
   const dispatch = useDispatch();
   const vidId=params.get("v");
 
-  // const getVideoData = async ()=>{
-  //   const resp= await fetch( VIDEO_API+vidId );
-  //   const json= await resp.json();
-  //   setData(json);
-  //   console.log(VIDEO_API+vidId);
-
-  // }
-  // useEffect(()=>{
-  //   getVideoData();
-  // },[]);
   useEffect(()=>{
     dispatch(closeMenu());
   },[]);
   return (
-
     <div className="w-full watch page">
-      <div className="vid-container m-5 mx-24">
+      <div className='m-5 mx-24'>
+      {/* video container */}
+      <div className="vid-container">
       <iframe 
       className='rounded-xl'
       width="890" 
@@ -37,10 +28,17 @@ const WatchPage = () => {
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
       allowFullScreen></iframe>
       </div>
-      <div className="m-5 mx-24">
+
+      {/* watchpagedetails */}
+      <div className="my-3">
         <WatchPageDetails videoId={vidId}/>
       </div>
       
+      {/* comments */}
+      <div className="">
+        <CommentContainer/>
+      </div>
+      </div>
       </div>
   )
 }

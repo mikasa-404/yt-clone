@@ -6,10 +6,3 @@ export const VIDEO_API="https://youtube.googleapis.com/youtube/v3/videos?part=sn
 
 export const YOUTUBE_SEARCH_API="https://corsproxy.io/?http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
 
-export const channelImage_api =
-  "https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&key=" +
-  key;
-  export const video_comments_details_api =
-  "https://www.googleapis.com/youtube/v3/commentThreads?textFormat=plainText&part=snippet&maxResults=100&order=relevance&key=" +
-  key +
-  "&videoId=";
