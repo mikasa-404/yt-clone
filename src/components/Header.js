@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import { YOUTUBE_SEARCH_API } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -82,7 +83,11 @@ const Header = () => {
         </div>
         {showSuggestions && <div className="bg-white fixed w-2/5 rounded-2xl ">
           <ul className="">
-            {searchSuggestions.map((s) => (<li key={s} className="hover:bg-gray-200 px-4 py-1">{s}</li>))}
+            {searchSuggestions.map((s) => (
+            <Link to={"/results/"+s} key={s} >
+              <li className="hover:bg-gray-200 px-4 py-1">{s}</li>
+            </Link>
+            ))}
           </ul>
         </div>}
       </div>

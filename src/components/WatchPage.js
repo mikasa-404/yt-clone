@@ -6,7 +6,6 @@ import WatchPageDetails from './WatchPageDetails';
 import CommentContainer from './CommentContainer';
 
 const WatchPage = () => {
-  // const [data, setData]=useState([]);
   const [params] = useSearchParams();
   const dispatch = useDispatch();
   const vidId=params.get("v");
