@@ -7,25 +7,46 @@ import Shimmer from "./Shimmer";
 
 const VideoContainer = () => {
   const [videos, setVideos]= useState([]);
+  const [scroll,setScroll]=useState(false);
   useEffect(() => {
-    console.log("useEffect");
     fetchVideos();
-  }, []);
+  }, [scroll]);
 
   const fetchVideos = async () => {
     const data = await fetch(YOUTUBE_VIDEOS_API);
     const datajson = await data.json();
-    setVideos(datajson?.items);
+    const newData=videos.concat(datajson?.items);
+    setVideos(newData);
+    setScroll(false);
   };
 
   const isMenuOpen = useSelector(store=>store.app.isOpen);
-
+  const handleScroll = async () => {
+    try{
+      // console.log(document.documentElement.scrollHeight); //845
+      // console.log(window.innerHeight);//709
+      // console.log(document.documentElement.scrollTop); //135..
+      if(window.innerHeight+ document.documentElement.scrollTop+2>=document.documentElement.scrollHeight){
+        setScroll(true);
+      }
+    }
+    catch(error){
+      console.log(error)
+    }
+    
+  };
+  useEffect(()=>{
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  },[])
 
   return videos.length===0? (<Shimmer/>):(
-    <div className={'m-3 overflow-y-scroll overflow-hidden h-screen p-auto ' + (isMenuOpen ? 'grid grid-cols-3': ' grid grid-cols-4')}>
+    <div className={'m-3 h-screen p-auto ' + (isMenuOpen ? 'grid grid-cols-3': ' grid grid-cols-4')}>
      {/* <AdVideoCard info={videos[0]}/> */}
-     { videos.map((vid)=>(
-     <Link key={vid.id} to={"/watch?v="+vid.id}>
+     { videos.map((vid, index)=>(
+     <Link key={vid?.id+index} to={"/watch?v="+vid.id}>
      <VideoCard  info={vid}/>
      </Link>))}
 
