@@ -48,7 +48,7 @@ const Header = () => {
   }, [suggestionsRef]);
 
   const getSearchSuggestions = async () => {
-    const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
+    const data = await fetch("http://localhost:1999/api/data");
     const json = await data.json();
     setSearchSuggestions(json[1]);
 
