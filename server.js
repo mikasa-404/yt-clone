@@ -8,9 +8,10 @@ const port = process.env.PORT || 1999;
 
 app.use(cors());
 
-app.get('/api/data', async (req, res) => {
+app.get('/api/data/:query', async (req, res) => {
     try {
-        const apiUrl = "https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=hello";
+        const query=req.params.query;
+        const apiUrl = "https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q="+query;
         const response = await fetch(apiUrl);
     
         if (!response.ok) {
