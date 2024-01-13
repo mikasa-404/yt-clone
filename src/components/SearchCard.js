@@ -6,7 +6,7 @@ const SearchCard = ({data}) => {
     const { thumbnails, title, channelTitle, description} = data?.snippet || {};
     const {videoId}=data?.id || {};
   return (
-    <div className='m-2 my-5 hover:bg-slate-100 rounded-md p-2'>
+    <div className='m-2 my-5 hover:bg-slate-100 rounded-md p-2 duration-200 scale-105'>
         <Link to={"/watch?v=" + videoId}>
         <div className='flex flex-row'>
           <img className="rounded-xl" alt="thumbnail" src={thumbnails?.medium?.url} />
