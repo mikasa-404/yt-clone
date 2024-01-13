@@ -23,9 +23,7 @@ const VideoContainer = () => {
   const isMenuOpen = useSelector(store=>store.app.isOpen);
   const handleScroll = async () => {
     try{
-      // console.log(document.documentElement.scrollHeight); //845
-      // console.log(window.innerHeight);//709
-      // console.log(document.documentElement.scrollTop); //135..
+  
       if(window.innerHeight+ document.documentElement.scrollTop+2>=document.documentElement.scrollHeight){
         setScroll(true);
       }

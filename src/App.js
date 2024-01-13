@@ -7,6 +7,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import MainContainer from "./components/MainContainer";
 import WatchPage from "./components/WatchPage";
 import SearchResultPage from "./components/SearchResultPage";
+import Shorts from "./components/Shorts";
 
 const appRouter = createBrowserRouter([
   {
@@ -23,6 +24,9 @@ const appRouter = createBrowserRouter([
       {
         path:"results/:query",
         element: <SearchResultPage/>
+      },{
+        path:"shorts",
+        element:<Shorts/>
       }
     ]
   },

@@ -22,7 +22,7 @@ const nFormatter=(num, digits) => {
 }
 // isMenuOpen? 'w-96 m-1': 'w-[20rem] m-1'
   return (
-    <div className={'m-2'}>
+    <div className={'m-2 duration-200 hover:scale-105'}>
         <img className="rounded-xl w-full" alt="thumbnail" src={thumbnails?.medium.url}/>
         <h1 className="font-medium my-2">{title}</h1>
         <div className="text-sm text-gray-600">
@@ -33,11 +33,5 @@ const nFormatter=(num, digits) => {
     </div>
   )
 }
-// //higher order component
-// export const AdVideoCard=({info})=>{
-//   return <div className="border border-red-500">
-//     <VideoCard info={info}/>
-//   </div>
-// }
 
 export default VideoCard
