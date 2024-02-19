@@ -10,9 +10,9 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchSuggestions, setSearchSuggestions] = useState([]);
+  const [searchSuggestions, setSearchSuggestions] = useState(["Loading suggestions... server might take a minute or two to start running"]);
   const [showSuggestions, setShowSuggestion] = useState(false);
-
+  console.log(searchSuggestions)
   const suggestionsRef = useRef();
 
   const Scache = useSelector((store) => store.search);
@@ -61,7 +61,7 @@ const Header = () => {
     );
   };
   return (
-    <div className="grid grid-flow-col ">
+    <div className="grid grid-flow-col mt-1">
       <div className="1 flex m-1 col-span-2">
         <img
           className="h-8 m-2 p-1 cursor-pointer"
@@ -95,8 +95,8 @@ const Header = () => {
           </Link>
         </div>
         {showSuggestions && (
-          <div className="bg-white absolute w-4/5 rounded-2xl z-10">
-            {searchSuggestions.length !== 0 ? (
+          <div className="bg-white absolute w-8/12 rounded-2xl z-10">
+  
               <ul className="">
                 {searchSuggestions.map((s, index) => (
                   <Link to={"/results/" + s} key={index}>
@@ -104,25 +104,20 @@ const Header = () => {
                   </Link>
                 ))}
               </ul>
-            ) : (
-              <div className=" text-red-700 m-2">
-                {" "}
-                Loading suggestions... this might take up a minute
-              </div>
-            )}
+          
           </div>
         )}
       </div>
 
-      <div className="3 m-1  col-span-2">
+      {/* <div className="3 m-1  col-span-2">
         <img
           className="h-8 m-2 float-right mr-5 "
           src={userIcon}
           alt="userLogo"
         ></img>
-      </div>
+      </div> */}
     </div>
-  );
+  );  
 };
 
 export default Header;
