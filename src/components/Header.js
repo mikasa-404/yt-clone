@@ -75,11 +75,10 @@ const Header = () => {
           <img className="h-8 m-2" alt="logo" src={ytlogo}></img>
         </a>
       </div>
-      <div
-        ref={suggestionsRef}
-        className="flex-1 w-full m-1 relative flex justify-center items-center"
-      >
-        <div className="flex w-full items-center justify-center">
+      <div className="flex-1 w-full m-1 relative flex justify-center items-center">
+        <div
+          className="flex w-full items-center justify-center"
+        >
           <input
             className=" w-[480px] border-slate-300 border rounded-l-2xl m-0 mr-0 text-base h-9 px-4 focus:outline-none focus:shadow-outline focus:border-blue-700"
             placeholder="Search"
@@ -88,6 +87,8 @@ const Header = () => {
               return setSearchQuery(e.target.value);
             }}
             onClick={() => setShowSuggestion(true)}
+            ref={suggestionsRef}
+
           ></input>
           <Link to={"/results/" + searchQuery}>
             <button className="border-slate-300 border rounded-r-2xl ml-0 flex justify-center items-center h-9 w-16 hover:bg-gray-100">
@@ -100,11 +101,11 @@ const Header = () => {
           </Link>
         </div>
         {showSuggestions && (
-          <div className="bg-white w-[544px] absolute rounded-2xl z-10 top-full">
+          <div className="bg-white w-[544px] absolute rounded-2xl z-[999] top-full">
             <ul className="">
               {searchSuggestions.map((s, index) => (
                 <Link to={"/results/" + s} key={index}>
-                  <li className="hover:bg-gray-200 px-4 py-1">{s}</li>
+                  <li className="hover:bg-gray-200 px-4 py-1" onClick={() => setSearchQuery(s)}>{s}</li>
                 </Link>
               ))}
             </ul>

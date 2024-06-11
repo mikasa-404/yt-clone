@@ -8,6 +8,7 @@ import MainContainer from "./components/MainContainer";
 import WatchPage from "./components/WatchPage";
 import SearchResultPage from "./components/SearchResultPage";
 import Shorts from "./components/Shorts";
+import { CATEGORY_VIDEOS } from "./utils/constants";
 
 const appRouter = createBrowserRouter([
   {

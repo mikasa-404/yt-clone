@@ -5,23 +5,41 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Shimmer from "./Shimmer";
 
-const VideoContainer = () => {
+const VideoContainer = ({ categoryId }) => {
   const [videos, setVideos] = useState([]);
   const [scroll, setScroll] = useState(false);
+
   useEffect(() => {
-    fetchVideos();
+    fetchVideos(true);
+  }, [categoryId]);
+
+  useEffect(() => {
+    if (scroll) {
+      fetchVideos(false);
+    }
   }, [scroll]);
 
-  const fetchVideos = async () => {
-    const data = await fetch(YOUTUBE_VIDEOS_API);
-    const datajson = await data.json();
-    const newData = videos.concat(datajson?.items);
-    setVideos(newData);
-    setScroll(false);
+  const fetchVideos = async (isNewCategory) => {
+    try {
+      const response = await fetch(YOUTUBE_VIDEOS_API + categoryId);
+      if (!response.ok) {
+        throw new Error("Failed to fetch videos");
+      }
+      const datajson = await response.json();
+      const newData = isNewCategory
+        ? datajson?.items
+        : videos.concat(datajson?.items);
+      setVideos(newData);
+    } catch (error) {
+      console.log(error);
+      setVideos([]);
+    } finally {
+      setScroll(false);
+    }
   };
-  console.log();
 
   const isMenuOpen = useSelector((store) => store.app.isOpen);
+
   const handleScroll = async () => {
     try {
       if (
@@ -34,6 +52,7 @@ const VideoContainer = () => {
       console.log(error);
     }
   };
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
