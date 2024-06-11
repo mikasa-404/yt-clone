@@ -10,9 +10,11 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchSuggestions, setSearchSuggestions] = useState(["Loading suggestions... server might take a minute or two to start running"]);
+  const [searchSuggestions, setSearchSuggestions] = useState([
+    "Loading suggestions... server might take a minute or two to start running",
+  ]);
   const [showSuggestions, setShowSuggestion] = useState(false);
-  console.log(searchSuggestions)
+  console.log(searchSuggestions);
   const suggestionsRef = useRef();
 
   const Scache = useSelector((store) => store.search);
@@ -61,10 +63,10 @@ const Header = () => {
     );
   };
   return (
-    <div className="grid grid-flow-col mt-1">
-      <div className="1 flex m-1 col-span-2">
+    <div className="flex mt-1">
+      <div className="flex m-1 col-span-2">
         <img
-          className="h-8 m-2 p-1 cursor-pointer"
+          className="h-8 m-2 mx-4 p-1 cursor-pointer rounded-md hover:bg-slate-100"
           src={hamButton}
           alt="hambutton"
           onClick={() => toggleMenuHandler()}
@@ -73,10 +75,13 @@ const Header = () => {
           <img className="h-8 m-2" alt="logo" src={ytlogo}></img>
         </a>
       </div>
-      <div ref={suggestionsRef} className="m-1 col-span-6 relative">
-        <div className="w-full flex items-center">
+      <div
+        ref={suggestionsRef}
+        className="flex-1 w-full m-1 relative flex justify-center items-center"
+      >
+        <div className="flex w-full items-center justify-center">
           <input
-            className=" w-8/12 border-slate-300 border rounded-l-2xl m-0 mr-0 text-base h-9 px-4 focus:outline-none focus:shadow-outline focus:border-blue-700"
+            className=" w-[480px] border-slate-300 border rounded-l-2xl m-0 mr-0 text-base h-9 px-4 focus:outline-none focus:shadow-outline focus:border-blue-700"
             placeholder="Search"
             value={searchQuery}
             onChange={(e) => {
@@ -85,7 +90,7 @@ const Header = () => {
             onClick={() => setShowSuggestion(true)}
           ></input>
           <Link to={"/results/" + searchQuery}>
-            <button className="border-slate-300 border rounded-r-2xl ml-0 p-2 h-9 hover:bg-gray-100">
+            <button className="border-slate-300 border rounded-r-2xl ml-0 flex justify-center items-center h-9 w-16 hover:bg-gray-100">
               <img
                 className=" h-5 pl-3 pr-4"
                 src={searchButton}
@@ -95,16 +100,14 @@ const Header = () => {
           </Link>
         </div>
         {showSuggestions && (
-          <div className="bg-white absolute w-8/12 rounded-2xl z-10">
-  
-              <ul className="">
-                {searchSuggestions.map((s, index) => (
-                  <Link to={"/results/" + s} key={index}>
-                    <li className="hover:bg-gray-200 px-4 py-1">{s}</li>
-                  </Link>
-                ))}
-              </ul>
-          
+          <div className="bg-white w-[544px] absolute rounded-2xl z-10 top-full">
+            <ul className="">
+              {searchSuggestions.map((s, index) => (
+                <Link to={"/results/" + s} key={index}>
+                  <li className="hover:bg-gray-200 px-4 py-1">{s}</li>
+                </Link>
+              ))}
+            </ul>
           </div>
         )}
       </div>
@@ -117,7 +120,7 @@ const Header = () => {
         ></img>
       </div> */}
     </div>
-  );  
+  );
 };
 
 export default Header;

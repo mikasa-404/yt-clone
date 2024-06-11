@@ -19,6 +19,7 @@ const VideoContainer = () => {
     setVideos(newData);
     setScroll(false);
   };
+  console.log()
 
   const isMenuOpen = useSelector(store=>store.app.isOpen);
   const handleScroll = async () => {
