@@ -12,7 +12,8 @@ const Sidebar = () => {
   //early return
   let location = useLocation();
   return isMenuOpen ? (
-    <div className="whitespace-nowrap overflow-hidden overflow-y-auto h-screen custom-scrollbar text-sm w-64">
+    <div className=" fixed bg-white whitespace-nowrap overflow-hidden overflow-y-auto custom-scrollbar text-sm w-52">
+      <div className="w-full h-14"></div>
       <ul className="border-0 border-b-2 py-3">
         <Link to="/">
           <li className="px-3 flex items-center rounded-lg bg-gray-100 hover:bg-gray-200 mx-2 py-1">
@@ -33,7 +34,9 @@ const Sidebar = () => {
       </ul>
     </div>
   ) : location.pathname === "/watch" ? null : (
-    <div className=" text-[0.6rem] p-2">
+    <div className="fixed bg-white text-[0.6rem] p-2 w-20">
+      <div className="w-full h-14"></div>
+
       <ul className=" text-center">
         <Link to="/">
           <li className=" p-1 py-4 rounded-lg hover:bg-gray-100 ">

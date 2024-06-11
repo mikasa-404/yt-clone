@@ -1,8 +1,9 @@
 import React from "react";
 
 const Button = ({ name }) => {
-    return(
-  <button className="bg-gray-100 m-1 p-2 px-3 rounded-lg">{name} </button>);
+  return (
+    <button className="bg-gray-100 m-1 p-2 px-3 rounded-lg">{name} </button>
+  );
 };
 
 const ButtonList = () => {
@@ -20,21 +21,20 @@ const ButtonList = () => {
     "FIFA",
     "MotoGP",
     "Marvel",
-    "lorem",
-    "ipsum",
     "Sports",
     "FIFA",
     "MotoGP",
     "Marvel",
-    "lorem",
-    "ipsum"
   ];
   return (
-    <div className=" whitespace-nowrap overflow-hidden overflow-x-scroll no-scrollbar m-3 text-sm">
-      <button className="bg-black m-1 p-2 px-3 rounded-lg text-white">All </button>
-      {bList.map((item, index)=> <Button key={index} name={item} />)}
+    <div className="z-20 fixed overflow-x-auto no-scrollbar text-sm whitespace-nowrap px-4 pb-2 mr-4 mt-14 bg-white">
+      <button className="bg-black m-1 p-2 px-3 rounded-lg text-white">
+        All{" "}
+      </button>
+      {bList.map((item, index) => (
+        <Button key={index} name={item} />
+      ))}
     </div>
-
   );
 };
 

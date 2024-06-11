@@ -20,7 +20,6 @@ const nFormatter=(num, digits) => {
     });
     return item ? (num / item.value).toFixed(digits).replace(rx, "$1") + item.symbol : "0";
 }
-// isMenuOpen? 'w-96 m-1': 'w-[20rem] m-1'
   return (
     <div className={'m-2 duration-200 hover:scale-105'}>
         <img className="rounded-xl w-full" alt="thumbnail" src={thumbnails?.medium.url}/>

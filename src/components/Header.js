@@ -63,7 +63,7 @@ const Header = () => {
     );
   };
   return (
-    <div className="flex mt-1">
+    <div className="fixed w-full bg-white z-20 flex">
       <div className="flex m-1 col-span-2">
         <img
           className="h-8 m-2 mx-4 p-1 cursor-pointer rounded-md hover:bg-slate-100"
