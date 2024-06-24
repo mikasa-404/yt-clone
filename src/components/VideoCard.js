@@ -35,7 +35,7 @@ const VideoCard = ({ info }) => {
       <h1 className="font-medium my-2">{title}</h1>
       <div className="text-sm text-gray-600">
         <h2>{channelTitle}</h2>
-        <h3 className="">{nFormatter(viewCount, 1)}</h3>
+        <h3 className="">{nFormatter(viewCount, 1)} views</h3>
       </div>
       </div>
     </div>
